@@ -26,6 +26,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Track::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->sentence(5),
+        'artist' => $faker->name,
         'duration' => $faker->numberBetween(120, 300)
     ];
 });

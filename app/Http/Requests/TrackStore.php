@@ -25,6 +25,7 @@ class TrackStore extends FormRequest
     {
         return [
             'name' => 'required',
+            'artist' => 'required',
             'duration' => 'required|integer'
         ];
     }
