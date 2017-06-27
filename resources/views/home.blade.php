@@ -4,13 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">Lista de pistas musicales</div>
-
-                <div class="panel-body">
-                    <track-list></track-list>
-                </div>
-            </div>
+            <pusher-events></pusher-events>
+            <track-list></track-list>
         </div>
         <div class="col-md-4">
             <div class="panel panel-default">
@@ -48,6 +43,19 @@
                     <code>
                         DELETE api.martincruz.me/v1/tracks/{id}
                     </code>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Tecnologías:</h4>
+                </div>
+                <div class="panel-body">
+                    <p class="text-center">
+                        <a href="https://laravel.com" target="_blank">Laravel</a> -
+                        <a href="https://vuejs.org" target="_blank">Vue.js</a> -
+                        <a href="https://pusher.com" target="_blank">Pusher</a>
+                    </p>
                 </div>
             </div>
         </div>

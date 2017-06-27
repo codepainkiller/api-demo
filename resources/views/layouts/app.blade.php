@@ -41,6 +41,11 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="https://github.com/martincruzot/api-demo" target="_blank">
+                                <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -50,6 +55,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://use.fontawesome.com/6dbbe451b1.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

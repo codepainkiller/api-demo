@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\TracksUpdated;
 use App\Http\Requests\TrackStore;
 use App\Track;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class TrackController extends ApiController
     public function index()
     {
         $limit = request('limit') ?: 50;
-        $tracks = Track::paginate($limit);
+        $tracks = Track::orderBy('created_at', 'desc')->paginate($limit);
 
         return $this->respondWithPagination($tracks, [
             'data' => $tracks->all()
@@ -31,7 +32,9 @@ class TrackController extends ApiController
      */
     public function store(TrackStore $request)
     {
-        Track::create($request->all());
+        $track = Track::create($request->all());
+
+        event(new TracksUpdated($request->method(), $request->url()));
 
         return $this->respondCreated('La pista ha sido creada.');
     }
@@ -49,6 +52,8 @@ class TrackController extends ApiController
         if (! $track) {
             return $this->respondNotFound('Pista no encontrada.');
         }
+
+        event(new TracksUpdated(request()->method(), request()->url()));
 
         return $this->respond([
             'data' => $track
@@ -71,6 +76,8 @@ class TrackController extends ApiController
         }
         $track->update($request->all());
 
+        event(new TracksUpdated($request->method(), $request->url()));
+
         return $this->respond([
             'message' => "La pista $id ha sido actualizada.",
             'data'    => $track
@@ -92,6 +99,8 @@ class TrackController extends ApiController
         }
 
         $track->delete();
+
+        event(new TracksUpdated(request()->method(), request()->url()));
 
         return $this->respond(['message' => "La pista $id ha sido eliminada."]);
     }
