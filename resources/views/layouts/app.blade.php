@@ -10,8 +10,15 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <script>
+        window.App = <?php echo json_encode([
+                'pusherKey' => config('broadcasting.connections.pusher.key'),
+        ]); ?>
+    </script>
+
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -55,7 +62,10 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://use.fontawesome.com/6dbbe451b1.js"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+
+
+    <script src="{{ mix('/js/manifest.js') }}"></script>
+    <script src="{{ mix('/js/vendor.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>

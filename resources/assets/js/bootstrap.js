@@ -49,5 +49,18 @@ if (token) {
 
  window.Echo = new Echo({
      broadcaster: 'pusher',
-     key: '90f9b51b43276c08334b'
+     key: App.pusherKey
  });
+
+/**
+ * Highlight.js
+ */
+window.hljs = require('highlight.js');
+
+$(document).ready(function() {
+    $('pre,code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+});
+
+
